@@ -1,6 +1,6 @@
 ---
 
-![Ansible](images/ansible-log.jpg)
+![Ansible](images/ansible-logo.jpg)
 
 ---
 
