@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elastic Stack</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+<img src="images/elastic-logo.svg" width="400px" />
+### .subtitle[Getting started]
+#### Thomas Rickard
+
+???
+
+A presentation on Ansible!
+
+---
+name: agenda
+
+## This presenation
+
+- Demo
+
+- Basics
+    - What is it?
+    - Uses?
+
+- Components
+    - Elasticsearch
+    - Logstash
+    - Kibana
+    - Beats
+
+- Workshop/examples
+    - Deploy Simple Elastic Stack
+    - Custom Log Example
+    - LE Test Script Example
+
+- Advanced
+    Message queueing
+
+???
+
+Some notes
+
+---
+
+class: center, middle, inverse
+
+# What is it?
+
+---
+
+class: center, middle, inverse
+
+# Components
+
+---
+
+layout: false
+.left-column[
+### Elasticsearch
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Elasticsearch
+### Logstash
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Elasticsearch
+### Logstash
+### Beats
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Elasticsearch
+### Logstash  
+### Beats
+### Kibana
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+class: center, middle, inverse
+
+# Deploy a Simple Elastic Stack
+
+---
+
+layout: false
+.left-column[
+### Options
+]
+.right-column[
+  To launch a simple
+
+- As a service
+
+- Executable
+
+- Docker
+
+.footnote[.red[*] Elasticsearch and Kibana should be secured using Basic Authentication as a minimum]
+]
+
+---
+
+layout: false
+.left-column[
+### Options
+### Ansible + Docker
+]
+.right-column[
+Make sure you have Ansible and docker-py installed:
+
+```bash
+pip install ansible==2.4.2.0
+pip install docker-py==
+```
+
+Fetch the Ansible and Docker Elasticsearch example from [github](https://github.com/tomrickard):
+
+```bash
+git clone https://github.com/tomrickard
+cd directory
+```
+
+Run the [basic-elastic.yml](https://github.com/tomrickard) playbook:
+  
+```bash
+ansible-playbook -i hosts -e "target=localhost" basic-elastic.yml
+```
+
+Check the containers are running in Docker:
+
+```bash
+docker ps
+```  
+
+You should now be able to visit:
+
+- Elasticsearch on [localhost:8080](http://localhost:8080)
+
+- Kibana on [localhost:8081](http://localhost:8081)
+
+]
+---
+
+layout: false
+.left-column[
+### Options
+### Ansible + Docker
+### Metricbeat
+]
+.right-column[
+Launch Metricbeat using the [add-metricbeat.yml](https://github.com/tomrickard) playbook:
+
+```bash
+ansible-playbook -i hosts -e "target=localhost" add-metricbeat.yml
+```
+]
+
+---
+
+layout: false
+.left-column[
+### Options
+### Ansible + Docker
+### Metricbeat
+### Kibana
+]
+.right-column[
+    
+]
+
+---
+
+class: center, middle, inverse
+
+# Custom Log Example
+
+---
+
+layout: false
+.left-column[
+### Write log file
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Write log file
+### Filebeat 
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Write log file
+### Filebeat 
+### ES Pipeline
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Write log file
+### Filebeat 
+### ES Pipeline
+### Visualisations
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Write log file
+### Filebeat
+### ES Pipeline
+### Visualisations
+### Dashboard
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+class: center, middle, inverse
+
+# LE Test Script Walkthrough
+
+---
+
+layout: false
+.left-column[
+### Log file
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Log file
+### Filebeat
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Log file
+### Filebeat
+### ES Pipeline
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Log file
+### Filebeat
+### ES Pipeline
+### Visualisation
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+layout: false
+.left-column[
+### Log file
+### Filebeat
+### ES Pipeline
+### Visualisation
+### Dashboard
+]
+.right-column[
+  A simple, in-browser, Markdown-driven slideshow tool targeted at people who know their way around HTML and CSS, featuring:
+
+- Markdown formatting, with smart extensions
+
+- Presenter mode, with cloned slideshow view
+
+- Syntax highlighting, supporting a range of languages
+
+- Slide scaling, thus similar appearance on all devices / resolutions .red[*]
+
+- Touch support for smart phones and pads, i.e. swipe to navigate slides
+
+.footnote[.red[*] At least browsers try their best]
+]
+
+---
+
+class: center, middle, inverse
+
+# Advanced
+
+---
+
+		</textarea>
+		<script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
+		
+		</script>
+		<script type="text/javascript">
+			var slideshow = remark.create({ 
+				highlightStyle: "atom-one-dark",
+				highlightLines: true
+			});
+		</script>
+	</body>
+</html>
